@@ -21,8 +21,6 @@ namespace TicTacToe
             InitializeComponent();
         }
 
-        /*якшо хрестик - 1, нолик - (-1), зробити метод SetSymbol, задати кожній індекс номер елемента массива. зроби кнопку старт(new game), розмалювати кнопки*/
-
         public void SetSymbol(int[] array, int index)
         {
             if (array[index] == 0 && isGame)
@@ -59,77 +57,30 @@ namespace TicTacToe
 
         public int CheckResult(int[] array)
         {
-            if (array[0] == 1 && array[1] == 1 && array[2] == 1)
+            int[][] winningCombinations = new int[][]
             {
-                return 1;
-            }
-            else if (array[0] == -1 && array[1] == -1 && array[2] == -1)
+                new int[] { 0, 1, 2 },
+                new int[] { 3, 4, 5 },
+                new int[] { 6, 7, 8 },
+                new int[] { 0, 3, 6 },
+                new int[] { 1, 4, 7 },
+                new int[] { 2, 5, 8 },
+                new int[] { 0, 4, 8 },
+                new int[] { 2, 4, 6 },
+            };
+
+            foreach (int[] combination in winningCombinations)
             {
-                return -1;
+                if (array[combination[0]] == 1 && array[combination[1]] == 1 && array[combination[2]] == 1)
+                {
+                    return 1;
+                }
+                else if (array[combination[0]] == -1 && array[combination[1]] == -1 && array[combination[2]] == -1)
+                {
+                    return -1;
+                }
             }
 
-            else if (array[3] == 1 && array[4] == 1 && array[5] == 1)
-            {
-                return 1;
-            }
-            else if (array[3] == -1 && array[4] == -1 && array[5] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[6] == 1 && array[7] == 1 && array[8] == 1)
-            {
-                return 1;
-            }
-            else if (array[6] == -1 && array[7] == -1 && array[8] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[0] == 1 && array[3] == 1 && array[6] == 1)
-            {
-                return 1;
-            }
-            else if (array[0] == -1 && array[3] == -1 && array[6] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[1] == 1 && array[4] == 1 && array[7] == 1)
-            {
-                return 1;
-            }
-            else if (array[1] == -1 && array[4] == -1 && array[7] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[2] == 1 && array[5] == 1 && array[8] == 1)
-            {
-                return 1;
-            }
-            else if (array[2] == -1 && array[5] == -1 && array[8] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[0] == 1 && array[4] == 1 && array[8] == 1)
-            {
-                return 1;
-            }
-            else if (array[0] == -1 && array[4] == -1 && array[8] == -1)
-            {
-                return -1;
-            }
-
-            else if (array[2] == 1 && array[4] == 1 && array[6] == 1)
-            {
-                return 1;
-            }
-            else if (array[2] == -1 && array[4] == -1 && array[6] == -1)
-            {
-                return -1;
-            }
             return 0;
         }
 
